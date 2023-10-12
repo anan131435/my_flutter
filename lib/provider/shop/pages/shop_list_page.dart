@@ -11,7 +11,9 @@ class ShopListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ListModel listModel = Provider.of<ListModel>(context);
+    // ListModel listModel = Provider.of<ListModel>(context);
+    // List<Shop> shops = listModel.shops;
+    ListModel listModel = context.watch<ListModel>();
     List<Shop> shops = listModel.shops;
     log("ShopListPage build");
     return Scaffold(

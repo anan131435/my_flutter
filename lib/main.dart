@@ -12,6 +12,10 @@ import 'package:flutter_tips/provider/shop/entity/collection_list_model.dart';
 import 'package:flutter_tips/provider/shop/entity/list_entity.dart';
 import 'package:flutter_tips/sliver/custom_tabview.dart';
 import 'package:flutter_tips/sliver/foo.dart';
+import 'package:flutter_tips/sliver/sliver/sliver_full.dart';
+import 'package:flutter_tips/sliver/sliver/sliver_grid.dart';
+import 'package:flutter_tips/sliver/sliver/sliver_list.dart';
+import 'package:flutter_tips/sliver/sliver/sliver_stack.dart';
 import 'package:flutter_tips/sliver/sliver_page.dart';
 import 'dart:developer';
 
@@ -107,7 +111,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return _proxyChangeNotifierProvider();
+    return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.orange,
+      ),
+      home: const SliverFullPage(),
+    );
   }
 }
 

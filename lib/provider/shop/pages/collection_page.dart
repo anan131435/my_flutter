@@ -11,7 +11,9 @@ class CollectionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CollectionListModel listModel = Provider.of<CollectionListModel>(context);
+    // CollectionListModel listModel = Provider.of<CollectionListModel>(context);
+    // List<Shop> shops = listModel.shops;
+    CollectionListModel listModel = context.read<CollectionListModel>();
     List<Shop> shops = listModel.shops;
     log("CollectionPage build");
     return Scaffold(
