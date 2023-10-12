@@ -1,14 +1,25 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_tips/key/switcher_page.dart';
+import 'package:flutter_tips/key/key_page.dart';
+import 'package:flutter_tips/key/switcher_widget.dart';
+import 'package:flutter_tips/provider/change_notifier_demo.dart';
+import 'package:flutter_tips/provider/future_demo.dart';
+import 'package:flutter_tips/provider/multi_demo.dart';
+import 'package:flutter_tips/provider/person.dart';
+import 'package:flutter_tips/provider/provider_demo.dart';
+import 'package:flutter_tips/provider/proxy_provider_demo.dart';
+import 'package:flutter_tips/provider/shop/change_notifier_proxy_demo.dart';
+import 'package:flutter_tips/provider/shop/entity/collection_list_model.dart';
+import 'package:flutter_tips/provider/shop/entity/list_entity.dart';
 import 'package:flutter_tips/sliver/custom_tabview.dart';
 import 'package:flutter_tips/sliver/foo.dart';
 import 'package:flutter_tips/sliver/sliver_page.dart';
 import 'dart:developer';
 
 import 'package:flutter_tips/sliver/tab_page.dart';
+import 'package:provider/provider.dart';
 
 import 'animation/animation_all.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -16,17 +27,87 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  Widget _multiProvider() {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<Person1>(
+          create: (context) => Person1(),
+        ),
+        ChangeNotifierProvider<Person2>(
+          create: (context) => Person2(),
+        )
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const MultiProviderDemo(),
+      ),
+    );
+  }
+
+  Widget _futureProvider() {
+    return FutureProvider<PersonFuture>(
+      initialData: PersonFuture("initName"),
+      create: (context) =>
+          Future.delayed(const Duration(milliseconds: 2000), () => PersonFuture("updateLaterFutureProvider")),
+      child: const MaterialApp(
+        home: FutureProviderDemo(),
+      ),
+    );
+  }
+
+  Widget _streamProvider() {
+    return StreamProvider<PersonFuture>(
+      initialData: PersonFuture("initName"),
+      create: (context) => Stream<PersonFuture>.periodic(
+          const Duration(seconds: 1), (computationCount) => PersonFuture("StreamProvider--$computationCount")),
+      child: const MaterialApp(
+        home: FutureProviderDemo(),
+      ),
+    );
+  }
+
+  //proxyProvider<T,R>,R依赖T或者用到T的值，T发生改变会通知R
+  Widget _proxyProviderWidget() {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<Person>(
+          create: (context) => Person(),
+        ),
+        ProxyProvider<Person, EatModel>(
+          update: (context, value, previous) => EatModel(value.name),
+        ),
+      ],
+      child: const MaterialApp(
+        home: ProxyProviderWidget(),
+      ),
+    );
+  }
+
+  Widget _proxyChangeNotifierProvider() {
+    return MultiProvider(providers: [
+      Provider<ListModel>(create: (context) => ListModel()),
+      ChangeNotifierProxyProvider<ListModel,CollectionListModel>(
+        create: (context) => CollectionListModel(ListModel()),
+        update: (context, value, previous) => CollectionListModel(value),
+      ),
+    ],
+      child: MaterialApp(
+        theme: ThemeData(
+          primarySwatch: Colors.orange,
+        ),
+        debugShowCheckedModeBanner: false,
+        home: const ChangeNotifierProxyDemo(),
+      ),
+    );
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        primarySwatch: Colors.blue,
-      ),
-      home:  CustomTabWidget(),
-    );
+    return _proxyChangeNotifierProvider();
   }
 }
 
@@ -50,7 +131,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  final GlobalKey<SwitchPageState> key = GlobalKey();
+  final GlobalKey<SwitchWidgetState> key = GlobalKey();
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -82,11 +163,13 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             const Text("you have pushed many times"),
             Text("$_counter"),
-             FooWidget(count: _counter,onPress: () {
-               setState(() {
-                 _counter+=2;
-               });
-             }),
+            FooWidget(
+                count: _counter,
+                onPress: () {
+                  setState(() {
+                    _counter += 2;
+                  });
+                }),
           ],
         ),
       ),
