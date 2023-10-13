@@ -12,6 +12,8 @@ import 'package:flutter_tips/provider/shop/entity/collection_list_model.dart';
 import 'package:flutter_tips/provider/shop/entity/list_entity.dart';
 import 'package:flutter_tips/sliver/custom_tabview.dart';
 import 'package:flutter_tips/sliver/foo.dart';
+import 'package:flutter_tips/sliver/sliver/home_sliver_page.dart';
+import 'package:flutter_tips/sliver/sliver/pin_sliver_page.dart';
 import 'package:flutter_tips/sliver/sliver/sliver_full.dart';
 import 'package:flutter_tips/sliver/sliver/sliver_grid.dart';
 import 'package:flutter_tips/sliver/sliver/sliver_list.dart';
@@ -115,7 +117,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: const SliverFullPage(),
+      home: const PinnedSliverPage(),
     );
   }
 }
