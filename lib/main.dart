@@ -22,6 +22,8 @@ import 'package:flutter_tips/sliver/sliver_page.dart';
 import 'dart:developer';
 
 import 'package:flutter_tips/sliver/tab_page.dart';
+import 'package:flutter_tips/video/video_app.dart';
+import 'package:flutter_tips/video/video_player_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'animation/animation_all.dart';
@@ -114,10 +116,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "VideoPlayer",
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: const PinnedSliverPage(),
+      home: const VideoApp(),
     );
   }
 }

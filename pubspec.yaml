@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   provider: ^6.0.5
   sliver_tools: ^0.2.12
+  video_player: ^2.7.0
 
 dev_dependencies:
   flutter_test:
