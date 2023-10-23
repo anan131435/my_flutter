@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
@@ -43,7 +44,13 @@ class _VideoPlayerPopPageState extends State<VideoPlayerPopPage> {
 
   @override
   Widget build(BuildContext context) {
-    log("_VideoPlayerPopPageState build");
+
+    if (ModalRoute.of(context)?.settings?.arguments is Map<String,String>) {
+      Map<String,String> arguments = ModalRoute.of(context)?.settings?.arguments as Map<String,String>;
+      log("arguments is Map<String,String> $arguments");
+    } else {
+      log("is not Map<String,String> ${ModalRoute.of(context)?.settings?.arguments }");
+    }
     return Material(
       child: Center(
         child: FutureBuilder(

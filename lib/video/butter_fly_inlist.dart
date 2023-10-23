@@ -28,9 +28,10 @@ class ButterFlyInList extends StatelessWidget {
                     title: Text("Video play"),
                   ),
                   Stack(
+                    alignment: FractionalOffset.bottomRight + const FractionalOffset(-0.1, -0.1),
                     children: [
                       const ButterFlyAssetVideo(),
-                      // Image.asset("assets/flutter-mark-square-64.png"),
+                      Image.asset("assets/flutter-mark-square-64.png"),
                     ],
                   )
                 ],
@@ -38,8 +39,8 @@ class ButterFlyInList extends StatelessWidget {
             ],
           ),
         ),
-        const FlutterLogo(),
-        const FlutterLogo(),
+        const FlutterLogo(size: 100),
+        const FlutterLogo(size: 100),
         const FlutterLogo(),
         const FlutterLogo(),
       ],

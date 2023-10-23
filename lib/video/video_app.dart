@@ -21,8 +21,12 @@ class VideoApp extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => VideoPlayerPopPage(),
-                        ));
+                          builder: (context) => const VideoPlayerPopPage(),
+                          settings: const RouteSettings(
+                            arguments: {"name": 123}
+                          )
+                        ),
+                    );
                   },
                   icon: const Icon(Icons.navigation))
             ],
