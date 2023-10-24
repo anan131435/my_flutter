@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tips/atomic/flutter_single.dart';
 import 'package:flutter_tips/key/key_page.dart';
 import 'package:flutter_tips/key/switcher_widget.dart';
 import 'package:flutter_tips/provider/change_notifier_demo.dart';
@@ -26,9 +27,10 @@ import 'package:flutter_tips/video/video_app.dart';
 import 'package:flutter_tips/video/video_player_screen.dart';
 import 'package:provider/provider.dart';
 
-import 'animation/animation_all.dart';
 
-void main() {
+void main() async{
+  SPSingle.getInstance().then((value) => log("instance1.hashcode:${identityHashCode(value)}"));
+  SPSingle.getInstance().then((value) => log("instance2.hashcode:${identityHashCode(value)}"));
   runApp(const MyApp());
 }
 
@@ -115,6 +117,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+    return _multiProvider();
+
     return MaterialApp(
       title: "VideoPlayer",
       theme: ThemeData(

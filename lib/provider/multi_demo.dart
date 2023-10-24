@@ -25,7 +25,9 @@ class MultiProviderDemo extends StatelessWidget {
                   },
                   child: const Text("changePerson1")
               );
-            },)
+            },
+            ),
+            TextField(),
           ],
         ),
       ),

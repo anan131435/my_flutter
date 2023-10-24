@@ -39,6 +39,11 @@ dependencies:
   provider: ^6.0.5
   sliver_tools: ^0.2.12
   video_player: ^2.7.0
+  tapped: ^2.0.0-nullsafety.0
+  # map取值
+  safemap: ^2.0.0-nullsafety.0
+  # 加载动画库
+  flutter_spinkit: ^5.0.0
 
 dev_dependencies:
   flutter_test:

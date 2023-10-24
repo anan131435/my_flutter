@@ -69,6 +69,13 @@ packages:
       url: "https://dartrepo.vvtechnology.cn"
     source: hosted
     version: "2.0.2"
+  flutter_spinkit:
+    dependency: "direct main"
+    description:
+      name: flutter_spinkit
+      url: "https://dartrepo.vvtechnology.cn"
+    source: hosted
+    version: "5.2.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -149,6 +156,13 @@ packages:
       url: "https://dartrepo.vvtechnology.cn"
     source: hosted
     version: "6.0.5"
+  safemap:
+    dependency: "direct main"
+    description:
+      name: safemap
+      url: "https://dartrepo.vvtechnology.cn"
+    source: hosted
+    version: "2.1.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -189,6 +203,13 @@ packages:
       url: "https://dartrepo.vvtechnology.cn"
     source: hosted
     version: "1.1.1"
+  tapped:
+    dependency: "direct main"
+    description:
+      name: tapped
+      url: "https://dartrepo.vvtechnology.cn"
+    source: hosted
+    version: "2.0.0"
   term_glyph:
     dependency: transitive
     description:
