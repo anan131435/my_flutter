@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_tips/atomic/flutter_single.dart';
 import 'package:flutter_tips/key/key_page.dart';
@@ -27,10 +29,30 @@ import 'package:flutter_tips/video/video_app.dart';
 import 'package:flutter_tips/video/video_player_screen.dart';
 import 'package:provider/provider.dart';
 
-
+getData<T>() async {
+  Future zyn = Future(() => debugPrint("运行的Future"))
+      .then((_) => debugPrint("运行的Future第一个then"))
+      .then((_) => debugPrint("运行的Future第二个then"))
+      .whenComplete(() => debugPrint("运行的FuturewhenComplete"));
+  print(zyn);
+}
+getDataCompleter() async {
+  var completer = Completer();
+  Future future = completer.future;
+  log("completer.future");
+  future.then((value) => debugPrint("运行的Future"))
+  .then((value) => debugPrint("运行的Future第一个then"))
+  .then((value) => debugPrint("运行的Future第2个then"))
+  .whenComplete(() => debugPrint("运行的FuturewhenComplete"));
+  log("先干点别的");
+  completer.complete();
+  print("completer.complete()");
+}
 void main() async{
+  // getDataCompleter();
   SPSingle.getInstance().then((value) => log("instance1.hashcode:${identityHashCode(value)}"));
   SPSingle.getInstance().then((value) => log("instance2.hashcode:${identityHashCode(value)}"));
+  SPSingle.getInstance().then((value) => log("instance3.hashcode:${identityHashCode(value)}"));
   runApp(const MyApp());
 }
 

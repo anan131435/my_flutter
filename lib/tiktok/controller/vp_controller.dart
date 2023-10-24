@@ -30,7 +30,7 @@ class VPVideoController extends TikTokVideoController<VideoPlayerController> {
     this.videoInfo,
     required ControllerBuilder<VideoPlayerController> builder,
     ControllerSetter<VideoPlayerController>? afterInit,
-  }) : _builder = builder,
+  })  : _builder = builder,
         _afterInit = afterInit;
 
   @override
@@ -39,8 +39,8 @@ class VPVideoController extends TikTokVideoController<VideoPlayerController> {
     return _controller!;
   }
 
-  bool get isDispose => _disposeLock != null;
   bool get prepared => _prepared;
+  bool get isDispose => _disposeLock != null;
 
   Future<void> _synCall(Future Function()? fn) async {
     var lastCompleter = _syncLock;
@@ -52,7 +52,6 @@ class VPVideoController extends TikTokVideoController<VideoPlayerController> {
     await fn?.call();
     completer.complete();
   }
-
 
   @override
   Future<void> dispose() async {
@@ -95,7 +94,7 @@ class VPVideoController extends TikTokVideoController<VideoPlayerController> {
   }
 
   @override
-  Future<void> play() async{
+  Future<void> play() async {
     await init();
     if (!prepared) return;
     if (_disposeLock != null) {

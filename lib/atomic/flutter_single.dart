@@ -35,13 +35,19 @@ class SPSingle {
   static Future<SPSingle> getInstance() async {
     if (_instance == null) {
       if (_monitor == null) {
+        print("_monitor == null");
         _monitor = Completer<bool>();
         _instance = await SPSingle._fromSharedPreference();
+        print("await SPSingle._fromSharedPreference()");
         _monitor!.complete(true);
       } else {
+        print("_monitor != null");
         await _monitor!.future;
+        print("_monitor 置为 null");
         _monitor = null;
       }
+    } else {
+      print("_instance != null");
     }
     return _instance!;
 
