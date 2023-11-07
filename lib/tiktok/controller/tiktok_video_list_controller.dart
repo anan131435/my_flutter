@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_tips/tiktok/controller/vp_controller';
+import 'package:flutter_tips/tiktok/controller/vp_controller.dart';
 import 'dart:math';
 
 typedef LoadMoreVideo = Future<List<VPVideoController>> Function(

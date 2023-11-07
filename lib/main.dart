@@ -1,58 +1,26 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_tips/atomic/flutter_single.dart';
-import 'package:flutter_tips/key/key_page.dart';
+import 'package:flutter_tips/basic/tapbox.dart';
+
 import 'package:flutter_tips/key/switcher_widget.dart';
-import 'package:flutter_tips/provider/change_notifier_demo.dart';
 import 'package:flutter_tips/provider/future_demo.dart';
 import 'package:flutter_tips/provider/multi_demo.dart';
 import 'package:flutter_tips/provider/person.dart';
-import 'package:flutter_tips/provider/provider_demo.dart';
 import 'package:flutter_tips/provider/proxy_provider_demo.dart';
 import 'package:flutter_tips/provider/shop/change_notifier_proxy_demo.dart';
 import 'package:flutter_tips/provider/shop/entity/collection_list_model.dart';
 import 'package:flutter_tips/provider/shop/entity/list_entity.dart';
-import 'package:flutter_tips/sliver/custom_tabview.dart';
 import 'package:flutter_tips/sliver/foo.dart';
-import 'package:flutter_tips/sliver/sliver/home_sliver_page.dart';
-import 'package:flutter_tips/sliver/sliver/pin_sliver_page.dart';
-import 'package:flutter_tips/sliver/sliver/sliver_full.dart';
-import 'package:flutter_tips/sliver/sliver/sliver_grid.dart';
-import 'package:flutter_tips/sliver/sliver/sliver_list.dart';
-import 'package:flutter_tips/sliver/sliver/sliver_stack.dart';
-import 'package:flutter_tips/sliver/sliver_page.dart';
-import 'dart:developer';
+import 'package:flutter_tips/alert/alert_page.dart';
 
-import 'package:flutter_tips/sliver/tab_page.dart';
-import 'package:flutter_tips/video/video_app.dart';
-import 'package:flutter_tips/video/video_player_screen.dart';
+
 import 'package:provider/provider.dart';
 
-getData<T>() async {
-  Future zyn = Future(() => debugPrint("运行的Future"))
-      .then((_) => debugPrint("运行的Future第一个then"))
-      .then((_) => debugPrint("运行的Future第二个then"))
-      .whenComplete(() => debugPrint("运行的FuturewhenComplete"));
-  print(zyn);
-}
-getDataCompleter() async {
-  var completer = Completer();
-  Future future = completer.future;
-  log("completer.future");
-  future.then((value) => debugPrint("运行的Future"))
-  .then((value) => debugPrint("运行的Future第一个then"))
-  .then((value) => debugPrint("运行的Future第2个then"))
-  .whenComplete(() => debugPrint("运行的FuturewhenComplete"));
-  log("先干点别的");
-  completer.complete();
-  print("completer.complete()");
-}
+import 'basic/column_page.dart';
+
+
 void main() async{
-  // getDataCompleter();
-  SPSingle.getInstance().then((value) => log("instance1.hashcode:${identityHashCode(value)}"));
-  SPSingle.getInstance().then((value) => log("instance2.hashcode:${identityHashCode(value)}"));
-  SPSingle.getInstance().then((value) => log("instance3.hashcode:${identityHashCode(value)}"));
   runApp(const MyApp());
 }
 
@@ -140,14 +108,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return _multiProvider();
+    // return _multiProvider();
 
     return MaterialApp(
       title: "VideoPlayer",
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: const VideoApp(),
+      home: const ParentWidget(),
     );
   }
 }

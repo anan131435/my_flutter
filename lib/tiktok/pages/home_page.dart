@@ -1,7 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_tips/tiktok/controller/vp_controller';
+import 'package:flutter_tips/tiktok/controller/vp_controller.dart';
 import 'package:flutter_tips/tiktok/mock/video.dart';
 import 'package:flutter_tips/tiktok/pages/follow_page.dart';
 import 'package:flutter_tips/tiktok/pages/msg_page.dart';
@@ -19,13 +19,13 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with WidgetsBindingObserver{
+class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   TikTokPageTag tabBarType = TikTokPageTag.home;
   TikTokScaffoldController tkController = TikTokScaffoldController();
   PageController _pageController = PageController();
   TikTokVideoListController _tikTokVideoListController = TikTokVideoListController();
 
-  Map<int,bool> favoriteMap = {};
+  Map<int, bool> favoriteMap = {};
   List<UserVideo> videoDataList = [];
 
   @override
@@ -33,19 +33,19 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver{
     videoDataList = UserVideo.fetchVideo();
     WidgetsBinding.instance.addObserver(this);
     _tikTokVideoListController.init(
-        pageController: _pageController,
-        initiaList: videoDataList.map((e) => VPVideoController(videoInfo: e,builder: () => VideoPlayerController.networkUrl(Uri.parse(e.url)))).toList(),
-        videoProvider: (index, list) async {
-          return videoDataList.map((e) =>
-              VPVideoController(builder: () =>
-                  VideoPlayerController.networkUrl(Uri.parse(e.url))))
-              .toList();
-        },
+      pageController: _pageController,
+      initiaList: videoDataList
+          .map(
+              (e) => VPVideoController(videoInfo: e, builder: () => VideoPlayerController.networkUrl(Uri.parse(e.url))))
+          .toList(),
+      videoProvider: (index, list) async {
+        return videoDataList
+            .map((e) => VPVideoController(builder: () => VideoPlayerController.networkUrl(Uri.parse(e.url))))
+            .toList();
+      },
     );
     _tikTokVideoListController.addListener(() {
-      setState(() {
-
-      });
+      setState(() {});
     });
 
     tkController.addListener(() {
@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver{
       hasBackground = true;
     }
     Widget tiktokTabBar = TiktokTabBar(
-        hasBackground: hasBackground,
+      hasBackground: hasBackground,
       current: tabBarType,
       onTabSwitch: (type) {
         setState(() {
@@ -94,16 +94,15 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver{
         });
       },
       onAddButton: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => Container()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Container()));
       },
     );
     var userPage = UserPage(
         isSelfPage: false,
-      canPop: true,
-      onPop: () {
+        canPop: true,
+        onPop: () {
           tkController.animateToMiddle();
-      }
-    );
+        });
     var searchPage = SearchPage(pop: tkController.animateToMiddle);
     var header = Container();
     return Container();

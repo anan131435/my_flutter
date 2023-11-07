@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_tips/tiktok/controller/vp_controller';
+import 'package:flutter_tips/tiktok/controller/vp_controller.dart';
 import 'package:video_player/video_player.dart';
 
 class HeightPage extends StatefulWidget {

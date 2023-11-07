@@ -46,7 +46,7 @@ class SliverHomePage extends StatelessWidget {
             ),
             itemBuilder: (context, index) => InkWell(
               onTap: () {
-                // log("GridView $index");
+                log("GridView $index");
               },
               child: Container(
                 color: Colors.pink,
