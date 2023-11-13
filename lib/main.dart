@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tips/basic/tapbox.dart';
 
 import 'package:flutter_tips/key/switcher_widget.dart';
+import 'package:flutter_tips/layout/layout.dart';
+import 'package:flutter_tips/pointer/gesture.dart';
+import 'package:flutter_tips/pointer/pointer_indicattor.dart';
 import 'package:flutter_tips/provider/future_demo.dart';
 import 'package:flutter_tips/provider/multi_demo.dart';
 import 'package:flutter_tips/provider/person.dart';
@@ -11,6 +14,8 @@ import 'package:flutter_tips/provider/proxy_provider_demo.dart';
 import 'package:flutter_tips/provider/shop/change_notifier_proxy_demo.dart';
 import 'package:flutter_tips/provider/shop/entity/collection_list_model.dart';
 import 'package:flutter_tips/provider/shop/entity/list_entity.dart';
+import 'package:flutter_tips/route/new_route.dart';
+import 'package:flutter_tips/route/tip_route.dart';
 import 'package:flutter_tips/sliver/foo.dart';
 import 'package:flutter_tips/alert/alert_page.dart';
 
@@ -111,11 +116,14 @@ class MyApp extends StatelessWidget {
     // return _multiProvider();
 
     return MaterialApp(
-      title: "VideoPlayer",
+      title: "MaterialApp",
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: const ParentWidget(),
+      routes: {
+        "new_page": (context) => const NewRoute(),
+        "/": (context) => const MyHomePage(title: "Home"),
+      },
     );
   }
 }
@@ -170,20 +178,23 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("you have pushed many times"),
-            Text("$_counter"),
-            FooWidget(
-                count: _counter,
-                onPress: () {
-                  setState(() {
-                    _counter += 2;
-                  });
-                }),
+            ElevatedButton(onPressed: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PointerIndicator(),));
+            },
+                child: const Text("手势"),
+            ),
+            ElevatedButton(
+                onPressed: (){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const GestureRecognizerPage(),));
+                }, child: const Text("富文本手势")
+            )
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: (){
+          Navigator.pushNamed(context, "new_page", arguments: {"name":"Java"});
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.

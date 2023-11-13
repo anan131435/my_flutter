@@ -52,9 +52,13 @@ class _ParentWidgetState extends State<ParentWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: TapBoxB(
-          active: _active,
-          onChanged: _handleTapBoxChanged,
+        child: LayoutBuilder(
+          builder: (context,p2) {
+            return TapBoxB(
+              active: _active,
+              onChanged: _handleTapBoxChanged,
+            );
+          }
         ),
       ),
     );

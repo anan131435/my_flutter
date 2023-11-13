@@ -35,3 +35,10 @@ class AnimationAllPage extends StatelessWidget {
     );
   }
 }
+/*
+* Animation是一个抽象类，它本身和UI渲染没有关系，他的主要功能是记录动画的状态和插值，
+* 常用的Animation类是Animation<double>
+通过Animation来监听动画每一帧及其状态的变化
+* addListener(),帧监听器
+* addStatusListener() 动画状态监听器， 动画开始 结束 正向 反向
+* */
