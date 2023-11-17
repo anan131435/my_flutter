@@ -1,10 +1,16 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_tips/animation/animation_default.dart';
-import 'package:flutter_tips/sliver/sliver_page.dart';
+import 'package:flutter_tips/animation/opacity.dart';
+import 'package:flutter_tips/animation/scale_animation.dart';
 
 class AnimationAllPage extends StatelessWidget {
-  const AnimationAllPage({super.key});
-
+   AnimationAllPage({super.key});
+  final titleList = [
+    "隐士动画",
+    "缩放动画",
+    "不透明度动画"
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +21,21 @@ class AnimationAllPage extends StatelessWidget {
       body: ListView.builder(itemBuilder: (context, index) {
         return InkWell(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const AnimationDefaultPage()));
+            switch (index) {
+              case 0:
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AnimationDefaultPage()));
+                print("${index}");
+                break;
+              case 1:
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScaleAnimationPage()));
+                print(index);
+                break;
+              case 2:
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const OpacityPage()));
+                print(index);
+                break;
+            };
+
           },
           child: Container(
            margin: const EdgeInsets.all(8),
@@ -26,11 +46,12 @@ class AnimationAllPage extends StatelessWidget {
             height: 89,
             width: double.infinity,
             alignment: Alignment.center,
-            child: const Text("隐士动画"),
+            child: Text(titleList[index]),
           ),
+
         );
       },
-        itemCount: 10,
+        itemCount: titleList.length,
       ),
     );
   }

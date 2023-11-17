@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_tips/basic/tapbox.dart';
+import 'package:flutter_tips/chat/chat_page.dart';
 
 import 'package:flutter_tips/key/switcher_widget.dart';
 import 'package:flutter_tips/layout/layout.dart';
@@ -22,6 +23,7 @@ import 'package:flutter_tips/alert/alert_page.dart';
 
 import 'package:provider/provider.dart';
 
+import 'animation/animation_all.dart';
 import 'basic/column_page.dart';
 
 
@@ -122,7 +124,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         "new_page": (context) => const NewRoute(),
-        "/": (context) => const MyHomePage(title: "Home"),
+        "/": (context) => const ChatPage(),
       },
     );
   }
