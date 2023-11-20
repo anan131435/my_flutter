@@ -1,15 +1,19 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_tips/animation/animated_counter.dart';
 import 'package:flutter_tips/animation/animation_default.dart';
 import 'package:flutter_tips/animation/opacity.dart';
 import 'package:flutter_tips/animation/scale_animation.dart';
+import 'package:flutter_tips/animation/tween_page.dart';
 
 class AnimationAllPage extends StatelessWidget {
    AnimationAllPage({super.key});
   final titleList = [
     "隐士动画",
     "缩放动画",
-    "不透明度动画"
+    "不透明度动画",
+    "TweenAnimationBuilder",
+    "计数器",
   ];
   @override
   Widget build(BuildContext context) {
@@ -32,6 +36,14 @@ class AnimationAllPage extends StatelessWidget {
                 break;
               case 2:
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const OpacityPage()));
+                print(index);
+                break;
+              case 3:
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const TweenPage()));
+                print(index);
+                break;
+              case 4:
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AnimatedCounterPage()));
                 print(index);
                 break;
             };

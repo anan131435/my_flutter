@@ -24,6 +24,7 @@ import 'package:flutter_tips/alert/alert_page.dart';
 import 'package:provider/provider.dart';
 
 import 'animation/animation_all.dart';
+import 'animation/scale_animation.dart';
 import 'basic/column_page.dart';
 
 
@@ -124,7 +125,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         "new_page": (context) => const NewRoute(),
-        "/": (context) => const ChatPage(),
+        "/": (context) => AnimationAllPage(),
       },
     );
   }

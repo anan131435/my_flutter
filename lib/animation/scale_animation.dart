@@ -17,7 +17,15 @@ class _ScaleAnimationPageState extends State<ScaleAnimationPage> with SingleTick
       duration: const Duration(milliseconds: 1000),
         vsync: this
     );
-    animation = Tween(begin: 10.0, end: 300.0).animate(controller);
+
+    animation = CurvedAnimation(parent: controller, curve: Curves.bounceOut);
+
+    animation = Tween(begin: 10.0, end: 300.0).animate(animation)
+    ..addListener(() {
+      setState(() {
+
+      });
+    });
     super.initState();
   }
 
@@ -29,6 +37,7 @@ class _ScaleAnimationPageState extends State<ScaleAnimationPage> with SingleTick
 
   @override
   Widget build(BuildContext context) {
+    print("Widget build(BuildContext context)");
     return Scaffold(
       appBar: AppBar(
         title: const Text("ScaleAnimationPage"),
