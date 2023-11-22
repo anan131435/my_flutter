@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_tips/animation/animate_builder_page.dart';
 import 'package:flutter_tips/animation/animated_counter.dart';
+import 'package:flutter_tips/animation/animation_controller.dart';
 import 'package:flutter_tips/animation/animation_default.dart';
 import 'package:flutter_tips/animation/opacity.dart';
 import 'package:flutter_tips/animation/scale_animation.dart';
@@ -14,6 +16,8 @@ class AnimationAllPage extends StatelessWidget {
     "不透明度动画",
     "TweenAnimationBuilder",
     "计数器",
+    '显示动画',
+    'AnimatedBuilder',
   ];
   @override
   Widget build(BuildContext context) {
@@ -44,9 +48,14 @@ class AnimationAllPage extends StatelessWidget {
                 break;
               case 4:
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const AnimatedCounterPage()));
-                print(index);
                 break;
-            };
+              case 5:
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ShowAnimated()));
+                break;
+              case 6:
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AnimatedBuilderPage()));
+                break;
+            }
 
           },
           child: Container(
