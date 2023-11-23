@@ -19,6 +19,7 @@ import 'package:flutter_tips/route/new_route.dart';
 import 'package:flutter_tips/route/tip_route.dart';
 import 'package:flutter_tips/sliver/foo.dart';
 import 'package:flutter_tips/alert/alert_page.dart';
+import 'package:flutter_tips/sliver/list_view/list_view_page.dart';
 
 
 import 'package:provider/provider.dart';
@@ -125,7 +126,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         "new_page": (context) => const NewRoute(),
-        "/": (context) => AnimationAllPage(),
+        "/": (context) => ContractListPage(),
       },
     );
   }
