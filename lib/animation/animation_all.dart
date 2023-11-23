@@ -4,6 +4,7 @@ import 'package:flutter_tips/animation/animated_counter.dart';
 import 'package:flutter_tips/animation/animation_default.dart';
 import 'package:flutter_tips/animation/opacity.dart';
 import 'package:flutter_tips/animation/scale_animation.dart';
+import 'package:flutter_tips/animation/seconds_timer.dart';
 import 'package:flutter_tips/animation/tween_page.dart';
 
 class AnimationAllPage extends StatelessWidget {
@@ -14,6 +15,7 @@ class AnimationAllPage extends StatelessWidget {
     "不透明度动画",
     "TweenAnimationBuilder",
     "计数器",
+    "秒表",
   ];
   @override
   Widget build(BuildContext context) {
@@ -45,6 +47,9 @@ class AnimationAllPage extends StatelessWidget {
               case 4:
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const AnimatedCounterPage()));
                 print(index);
+                break;
+              case 5:
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const SecondsTimer()));
                 break;
             };
 
