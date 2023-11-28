@@ -52,7 +52,7 @@ class _ContractListPageState extends State<ContractListPage> with SingleTickerPr
                 return Container(
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    border: Border.all(color: Theme.of(context).primaryColor),
+                    border: Border.all(color: Theme.of(context).primaryColor,width: 0.5,),
                   ),
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 16),
