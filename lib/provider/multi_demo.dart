@@ -27,7 +27,6 @@ class MultiProviderDemo extends StatelessWidget {
               );
             },
             ),
-            TextField(),
           ],
         ),
       ),

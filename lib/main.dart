@@ -20,7 +20,9 @@ import 'package:flutter_tips/route/tip_route.dart';
 import 'package:flutter_tips/sliver/foo.dart';
 import 'package:flutter_tips/alert/alert_page.dart';
 import 'package:flutter_tips/sliver/list_view/list_view_page.dart';
+import 'package:flutter_tips/state_manage/my_inherited.dart';
 import 'package:flutter_tips/state_manage/state_one.dart';
+import 'package:flutter_tips/state_manage/my_inherited.dart';
 
 
 import 'package:provider/provider.dart';
@@ -120,15 +122,18 @@ class MyApp extends StatelessWidget {
 
     // return _multiProvider();
 
-    return MaterialApp(
-      title: "MaterialApp",
-      theme: ThemeData(
-        primarySwatch: Colors.orange,
+    return ColorInherited(
+      color: Colors.blue,
+      child: MaterialApp(
+        title: "MaterialApp",
+        theme: ThemeData(
+          primarySwatch: Colors.orange,
+        ),
+        routes: {
+          "new_page": (context) => const NewRoute(),
+          "/": (context) => const MyInheritedWidget(),
+        },
       ),
-      routes: {
-        "new_page": (context) => const NewRoute(),
-        "/": (context) => const StateOnePage(),
-      },
     );
   }
 }

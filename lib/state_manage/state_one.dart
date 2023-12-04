@@ -48,28 +48,24 @@ class _StateOnePageState extends State<StateOnePage> {
 
 // int double 是copy传值,
 // 控件访问外部变量通过参数传递传入，修改外部变量通过回调函数在外面修改
-class Foo extends StatefulWidget {
+// ignore: must_be_immutable
+class Foo extends StatelessWidget {
   int count;
   void Function() callBack;
   Foo({Key? key, required this.count, required this.callBack}) : super(key: key);
 
-  @override
-  State<Foo> createState() => _FooState();
-}
-
-class _FooState extends State<Foo> {
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
         children: [
           Text(
-            '${widget.count}',
+            '$count',
             style: const TextStyle(fontSize: 60),
           ),
           ElevatedButton(
             onPressed: () {
-              widget.callBack();
+              callBack();
             },
             child: const Text("add count"),
           )
