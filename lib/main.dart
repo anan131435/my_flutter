@@ -26,6 +26,7 @@ import 'package:flutter_tips/state_manage/my_inherited.dart';
 import 'package:flutter_tips/state_manage/my_provider.dart';
 import 'package:flutter_tips/state_manage/state_one.dart';
 import 'package:flutter_tips/state_manage/my_inherited.dart';
+import 'package:flutter_tips/state_manage/ui/my_provider.dart';
 
 
 import 'package:provider/provider.dart';
@@ -125,8 +126,8 @@ class MyApp extends StatelessWidget {
 
     // return _multiProvider();
 
-    return LogoModelProvider(
-      model: LogoModel(),
+    return MyModelProvider(
+      create: () => LogoModel(),
       child: MaterialApp(
         title: "MaterialApp",
         theme: ThemeData(

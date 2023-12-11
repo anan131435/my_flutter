@@ -10,6 +10,7 @@ class LogoModelProvider extends InheritedWidget {
   }
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) {
+    print("updateShouldNotify");
     return true;
   }
 

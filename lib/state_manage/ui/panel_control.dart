@@ -46,7 +46,6 @@ class _PanelControlState extends State<PanelControl> {
                     value: model.size,
                     onChanged: (value) {
                       model.size = value;
-                      print(value);
                     }),
               ],
             ),
