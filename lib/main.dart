@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_tips/animation/signature/signature_painter.dart';
+import 'package:flutter_tips/animation/signature/signature_widge.dart';
 import 'package:flutter_tips/basic/tapbox.dart';
 import 'package:flutter_tips/chat/chat_page.dart';
 
@@ -122,18 +124,15 @@ class MyApp extends StatelessWidget {
 
     // return _multiProvider();
 
-    return ColorInherited(
-      color: Colors.blue,
-      child: MaterialApp(
-        title: "MaterialApp",
-        theme: ThemeData(
-          primarySwatch: Colors.orange,
-        ),
-        routes: {
-          "new_page": (context) => const NewRoute(),
-          "/": (context) => const MyInheritedWidget(),
-        },
+    return MaterialApp(
+      title: "MaterialApp",
+      theme: ThemeData(
+        primarySwatch: Colors.orange,
       ),
+      routes: {
+        "new_page": (context) => const NewRoute(),
+        "/": (context) => VVSignature(),
+      },
     );
   }
 }
