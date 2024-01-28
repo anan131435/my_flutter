@@ -39,6 +39,12 @@ import 'basic/column_page.dart';
 
 
 void main() async{
+  DateTime dateTime = DateTime(2023,12,1);
+  print(dateTime);
+  DateTime nextTime = dateTime.add(const Duration(days: -1));
+  print(nextTime);
+  int maxDays = nextTime.day;
+  print("maxDays: $maxDays");
   runApp(const MyApp());
 }
 
@@ -135,7 +141,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         "new_page": (context) => const NewRoute(),
-        "/": (context) => VVSignature(),
+        "/": (context) =>  AnimationAllPage(),
       },
     );
   }

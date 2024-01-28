@@ -1,19 +1,18 @@
 // 月模型
 import 'package:flutter/material.dart';
+import 'package:flutter_tips/calendar/model/date_day.dart';
 
 class DateMonth {
   final DateTime _time;
-  DateTime get time => _time;
-
   late int _year;
-  int get year => _year;
-
   late int _month;
-  int get month =>_month;
-
   late int _maxDays;
-  int get maxDays => _maxDays;
 
+
+  DateTime get time => _time;
+  int get year => _year;
+  int get month =>_month;
+  int get maxDays => _maxDays;
   int get weekDay => time.weekday;
 
   DateMonth(int year,[int month = 1]) : this.dateTime(DateTime(year,month,1));
@@ -40,9 +39,24 @@ class DateMonth {
 
   @override
   String toString({String yearSuffix = '-',String mothSuffix = ''}) {
-    // String y
-    return super.toString();
+    String y = fourDigits(year);
+    String m = twoDigits(month);
+    return "$y$yearSuffix$m$mothSuffix";
+
   }
+  @override
+  bool operator == (Object other) {
+    return identical(this, other) || other is DateMonth && num == other.num;
+  }
+
+  bool operator >(Object other) {
+    return other is DateMonth && runtimeType == other.runtimeType && num >other.num;
+  }
+  bool contains(DateDay day) {
+   return day.year == _year && day.month == _month;
+  }
+
+
   String fourDigits(int n) {
     int absN = n.abs();
     String sign = n < 0 ? "-" : "";
@@ -51,4 +65,9 @@ class DateMonth {
     if (absN >=10) return "${sign}00$absN";
     return "";
   }
+  String twoDigits(int n) {
+    if (n >= 10) return "$n";
+    return "0$n";
+  }
+  int get num => year * 100 + month;
 }

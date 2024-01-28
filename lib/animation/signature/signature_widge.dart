@@ -12,6 +12,15 @@ class VVSignature extends StatefulWidget {
 class _VVSignatureState extends State<VVSignature> {
   final _controller = HandWriteSignatureController();
   Uint8List? _savedImage;
+  final List<String> lists = [];
+  String checkStrFormate() {
+    if (lists.isEmpty) {
+      throw Exception("list isEmpty");
+    } else {
+      return lists.first;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,10 +34,17 @@ class _VVSignatureState extends State<VVSignature> {
             children: [
               IconButton(
                 onPressed: () async{
-                 final drawData = await _controller.saveImage();
-                 setState(() {
-                   _savedImage = drawData;
-                 });
+                  try {
+                    var result = checkStrFormate();
+                    print("return result is $result");
+                  } catch(e,s) {
+                    print("return result is $e");
+                  }
+
+                 // final drawData = await _controller.saveImage();
+                 // setState(() {
+                 //   _savedImage = drawData;
+                 // });
                 },
                 icon: const Icon(Icons.save),
               ),
@@ -39,7 +55,7 @@ class _VVSignatureState extends State<VVSignature> {
                     _savedImage = null;
                   });
                 },
-                icon: Icon(Icons.clear),
+                icon: const Icon(Icons.clear),
               )
             ],
           ),

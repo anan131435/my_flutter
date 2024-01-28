@@ -49,7 +49,7 @@ class _AnimationDefaultPageState extends State<AnimationDefaultPage> {
             },
             duration:  const Duration(milliseconds: 1000),
             // child: CircularProgressIndicator(key: UniqueKey(),),
-            // child: Icon(Icons.add_a_photo_outlined),
+            // child: const Icon(Icons.add_a_photo_outlined,key: ValueKey("photo"),),
             child: Icon(Icons.phone,key: ValueKey("phone")),
           ),
         ),

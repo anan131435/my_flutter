@@ -20,7 +20,7 @@ class _ScaleAnimationPageState extends State<ScaleAnimationPage> with SingleTick
 
     animation = CurvedAnimation(parent: controller, curve: Curves.bounceOut);
 
-    animation = Tween(begin: 10.0, end: 300.0).animate(animation)
+    animation = Tween(begin: 90.0, end: 300.0).animate(animation)
     ..addListener(() {
       setState(() {
 
@@ -42,15 +42,17 @@ class _ScaleAnimationPageState extends State<ScaleAnimationPage> with SingleTick
       appBar: AppBar(
         title: const Text("ScaleAnimationPage"),
       ),
-      body: AnimatedBuilder(
-        builder: (context, child) {
-          return Icon(
-            Icons.phone,
-            color: Colors.red,
-            size: animation.value,
-          );
-        },
-        animation: animation,
+      body: Center(
+        child: AnimatedBuilder(
+          builder: (context, child) {
+            return Icon(
+              Icons.phone,
+              color: Colors.red,
+              size: animation.value,
+            );
+          },
+          animation: animation,
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
