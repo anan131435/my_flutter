@@ -2,7 +2,22 @@ import 'package:flutter/material.dart';
 
 class TweenPage extends StatelessWidget {
   const TweenPage({super.key});
-
+  //补间动画 Tween 动画变量 + Transform.
+  Widget _tweenAnimationBuilder() {
+    return TweenAnimationBuilder(
+      tween: Tween<double>(begin:0,end: 10.0),
+      duration: const Duration(seconds: 1),
+      builder: (context, value, child) {
+        return Text("data",style: TextStyle(fontSize: value),);
+      },
+    );
+  }
+  Widget getScale() {
+    return Transform.scale(
+      scale: 1.2,
+      child: Container(),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
