@@ -5,6 +5,7 @@ import 'package:flutter_tips/animation/signature/signature_painter.dart';
 import 'package:flutter_tips/animation/signature/signature_widge.dart';
 import 'package:flutter_tips/basic/tapbox.dart';
 import 'package:flutter_tips/chat/chat_page.dart';
+import 'package:flutter_tips/constrains/layout.dart';
 
 import 'package:flutter_tips/key/switcher_widget.dart';
 import 'package:flutter_tips/layout/layout.dart';
@@ -39,12 +40,6 @@ import 'basic/column_page.dart';
 
 
 void main() async{
-  DateTime dateTime = DateTime(2023,12,1);
-  print(dateTime);
-  DateTime nextTime = dateTime.add(const Duration(days: -1));
-  print(nextTime);
-  int maxDays = nextTime.day;
-  print("maxDays: $maxDays");
   runApp(const MyApp());
 }
 
@@ -141,7 +136,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         "new_page": (context) => const NewRoute(),
-        "/": (context) =>  AnimationAllPage(),
+        "/": (context) => const LayoutPurePage(),
       },
     );
   }
