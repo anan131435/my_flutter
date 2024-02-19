@@ -9,34 +9,22 @@ class LayoutPage extends StatelessWidget {
         title: const Text("Layout Error"),
         centerTitle: true,
       ),
-      body: LayoutBuilder(
-        builder: (p0, p1) {
-          print("body $p1");
-          return Row(
-            children: [
-              const Icon(Icons.add_call,size: 100,),
-              Expanded( // remove this will cause error
-                child: LayoutBuilder(
-                  builder: (p0, p1) {
-                    print(p1);
-                    return Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Title',style: Theme.of(context).textTheme.headlineMedium,),
-                        const Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed'
-                            ' do eiusmod tempor incididunt ut labore et dolore magna '
-                            'aliqua. Ut enim ad minim veniam, quis nostrud '
-                            'exercitation ullamco laboris nisi ut aliquip ex ea '
-                            'commodo consequat.')
-                      ],
-                    );
-                  },
-                ),
-              )
-            ],
-          );
-        }
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Icon(Icons.add_call,size: 30,),
+          const SizedBox(width: 20,),
+          Expanded(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text('Lorem ipsum dolor sit amet.Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet')
+              ],
+            ),
+          ),
+          const Icon(Icons.close),
+        ],
       ),
     );
   }

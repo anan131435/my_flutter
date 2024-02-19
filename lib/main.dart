@@ -136,7 +136,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         "new_page": (context) => const NewRoute(),
-        "/": (context) => const LayoutPurePage(),
+        "/": (context) => const LayoutPage(),
       },
     );
   }
