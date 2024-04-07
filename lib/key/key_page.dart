@@ -21,6 +21,8 @@ class KeyPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          Theme.of(context).primaryColor;
+          MediaQuery.of(context).size.width;
           globalKey.currentState!.changeState();
         },
         child: Icon(Icons.add),

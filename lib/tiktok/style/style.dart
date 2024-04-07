@@ -26,3 +26,41 @@ class StandardTextStyle {
     inherit: true
   );
 }
+
+class Coffee {
+  //声明一个非空变量，声明时不初始化，后面一定初始化，有运行时风险
+  late String _temperature;
+  void heat() {
+    _temperature = "hot";
+  }
+  void chill() {
+    _temperature = "iced";
+  }
+
+  String server() => "${_temperature}coffee";
+
+}
+
+class MainDart {
+  void testFunction() {
+    Coffee coffee = Coffee();
+    coffee.heat();
+    coffee.server();
+    //懒加载，只有用到下面的变量才会调用函数
+    late String temperature = coffee.server();
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

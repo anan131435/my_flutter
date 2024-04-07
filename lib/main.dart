@@ -6,6 +6,8 @@ import 'package:flutter_tips/animation/signature/signature_widge.dart';
 import 'package:flutter_tips/basic/tapbox.dart';
 import 'package:flutter_tips/chat/chat_page.dart';
 import 'package:flutter_tips/constrains/layout.dart';
+import 'package:flutter_tips/key/key_page.dart';
+import 'package:flutter_tips/key/state_lost.dart';
 
 import 'package:flutter_tips/key/switcher_widget.dart';
 import 'package:flutter_tips/layout/layout.dart';
@@ -37,6 +39,7 @@ import 'package:provider/provider.dart';
 import 'animation/animation_all.dart';
 import 'animation/scale_animation.dart';
 import 'basic/column_page.dart';
+import 'basic/stack_column_page.dart';
 
 
 void main() async{
@@ -136,7 +139,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         "new_page": (context) => const NewRoute(),
-        "/": (context) => const LayoutPage(),
+        "/": (context) => const StackUINoColum(),
       },
     );
   }
