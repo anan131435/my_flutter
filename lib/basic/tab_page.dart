@@ -41,22 +41,19 @@ class _TabPageState extends State<TabPage> with SingleTickerProviderStateMixin,A
   }
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      top: true,
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text("TabPageState Loose"),
-        ),
-        body: Column(
-          children: [
-            _header(),
-            TabBar(tabs: _tabs.map((e) => Tab(text: e,)).toList(),
-            controller: _tabController,
-            ),
-            Expanded(child: TabBarView(controller: _tabController,children: _pages)),
-          ],
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("TabPageState Loose"),
+      ),
+      body: Column(
+        children: [
+          _header(),
+          TabBar(tabs: _tabs.map((e) => Tab(text: e,)).toList(),
+          controller: _tabController,
+          ),
+          Expanded(child: TabBarView(controller: _tabController,children: _pages)),
+        ],
       ),
     );
   }

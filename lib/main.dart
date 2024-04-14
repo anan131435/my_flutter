@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_tips/animation/signature/signature_painter.dart';
 import 'package:flutter_tips/animation/signature/signature_widge.dart';
+import 'package:flutter_tips/async_learn/multi_thread.dart';
 import 'package:flutter_tips/basic/tab_page.dart';
 import 'package:flutter_tips/basic/tapbox.dart';
 import 'package:flutter_tips/chat/chat_page.dart';
@@ -141,7 +142,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         "new_page": (context) => const NewRoute(),
-        "/": (context) => const TabPage(),
+        "/": (context) => const MultiThreadPage(),
       },
     );
   }
