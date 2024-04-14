@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_tips/animation/signature/signature_painter.dart';
 import 'package:flutter_tips/animation/signature/signature_widge.dart';
+import 'package:flutter_tips/basic/tab_page.dart';
 import 'package:flutter_tips/basic/tapbox.dart';
 import 'package:flutter_tips/chat/chat_page.dart';
 import 'package:flutter_tips/constrains/layout.dart';
@@ -14,6 +15,7 @@ import 'package:flutter_tips/layout/layout.dart';
 import 'package:flutter_tips/pointer/gesture.dart';
 import 'package:flutter_tips/pointer/pointer_indicattor.dart';
 import 'package:flutter_tips/provider/future_demo.dart';
+import 'package:flutter_tips/provider/inherited_widget.dart';
 import 'package:flutter_tips/provider/multi_demo.dart';
 import 'package:flutter_tips/provider/person.dart';
 import 'package:flutter_tips/provider/proxy_provider_demo.dart';
@@ -139,7 +141,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         "new_page": (context) => const NewRoute(),
-        "/": (context) => const StackUINoColum(),
+        "/": (context) => const TabPage(),
       },
     );
   }

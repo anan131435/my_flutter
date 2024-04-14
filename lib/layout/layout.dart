@@ -26,6 +26,9 @@ class LayoutPage extends StatelessWidget {
           const Icon(Icons.close),
         ],
       ),
+      floatingActionButton: Builder(builder: (context) {
+        return Container();
+      },),
     );
   }
 }
