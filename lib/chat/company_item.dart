@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:flutter_module_organization/config/org_colors.dart';
 import 'package:flutter_module_organization/function/home/entity/org_company_list_entity.dart';
@@ -43,3 +44,4 @@ class CompanyItem extends StatelessWidget {
     );
   }
 }
+*/

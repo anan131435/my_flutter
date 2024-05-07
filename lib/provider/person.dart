@@ -38,3 +38,25 @@ class PersonFuture {
   final String name;
   PersonFuture(this.name);
 }
+
+class Rule with ChangeNotifier {
+  final String id;
+  List<String>? get listValue => _listValue;
+  List<String>? _listValue;
+  Rule(this.id);
+
+  void refreshData() {
+    Future.delayed(const Duration(milliseconds: 1000)).then((value) {
+      _listValue = ["XXX","ZZZ"];
+      print("notifyListeners");
+      notifyListeners();
+    });
+  }
+}
+
+class DiscoverChangeController with ChangeNotifier {
+  final String id;
+  final List<String> dataSource;
+  DiscoverChangeController(this.id,this.dataSource);
+
+}

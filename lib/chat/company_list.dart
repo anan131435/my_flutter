@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:flutter_module_organization/config/flutter_module_organization_constants.dart';
 import 'company_item.dart';
@@ -58,3 +59,4 @@ class CompanyListWidget extends StatelessWidget {
     );
   }
 }
+*/
