@@ -30,6 +30,7 @@ import 'package:flutter_tips/route/tip_route.dart';
 import 'package:flutter_tips/sliver/foo.dart';
 import 'package:flutter_tips/alert/alert_page.dart';
 import 'package:flutter_tips/sliver/grid_page.dart';
+import 'package:flutter_tips/sliver/keep_alive_test_page.dart';
 import 'package:flutter_tips/sliver/list_view/list_view_page.dart';
 import 'package:flutter_tips/sliver/sliver/home_sliver_page.dart';
 import 'package:flutter_tips/state_manage/logo_model.dart';
@@ -154,7 +155,7 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           "new_page": (context) => const NewRoute(),
-          "/": (context) => const TextPage(),
+          "/": (context) => const KeepAliveTestPage(),
         },
       ),
     );
