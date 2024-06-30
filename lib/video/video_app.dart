@@ -3,6 +3,7 @@ import 'package:flutter_tips/video/bumble_bee_page.dart';
 import 'package:flutter_tips/video/butter_fly_inlist.dart';
 import 'package:flutter_tips/video/butterfly_asset_video_page.dart';
 import 'package:flutter_tips/video/player_pop_page.dart';
+import 'package:native_updater/native_updater.dart';
 
 class VideoApp extends StatelessWidget {
   const VideoApp({super.key});
@@ -18,14 +19,13 @@ class VideoApp extends StatelessWidget {
             actions: [
               IconButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const VideoPlayerPopPage(),
-                          settings: const RouteSettings(
-                            arguments: {"name": 123}
-                          )
-                        ),
+                    NativeUpdater.displayUpdateAlert(
+                      context,
+                      forceUpdate: true,
+                      appStoreUrl: 'www.baidu.com',
+                      iOSDescription: '小说内容',
+                      iOSUpdateButtonLabel: '更新',
+                      iOSIgnoreButtonLabel: 'Next Time',
                     );
                   },
                   icon: const Icon(Icons.navigation))

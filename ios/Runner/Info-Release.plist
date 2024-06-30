@@ -21,6 +21,10 @@
 	<string>flutter_tips</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>NSBonjourServices</key>
+    <array>
+        <string>_dartobservatory._tcp</string>
+    </array>
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>

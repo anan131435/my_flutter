@@ -41,7 +41,9 @@ import 'package:flutter_tips/state_manage/state_one.dart';
 import 'package:flutter_tips/state_manage/my_inherited.dart';
 import 'package:flutter_tips/state_manage/ui/my_provider.dart';
 import 'package:flutter_tips/text/text_page.dart';
+import 'package:flutter_tips/video/bumble_bee_page.dart';
 import 'package:flutter_tips/video/video_app.dart';
+import 'package:flutter_tips/video/video_player_screen.dart';
 
 
 import 'package:provider/provider.dart';
@@ -155,7 +157,7 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           "new_page": (context) => const NewRoute(),
-          "/": (context) => const KeepAliveTestPage(),
+          "/": (context) => const VideoPlayerScreen(),
         },
       ),
     );

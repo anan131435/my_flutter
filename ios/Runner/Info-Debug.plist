@@ -5,6 +5,7 @@
 	<key>NSBonjourServices</key>
 	<array>
 		<string>_dartVmService._tcp</string>
+		<string>_dartobservatory._tcp</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>

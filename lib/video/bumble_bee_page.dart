@@ -13,7 +13,15 @@ class BumbleBeeRemoteVideo extends StatefulWidget {
 
 class _BumbleBeeRemoteVideoState extends State<BumbleBeeRemoteVideo> {
   late VideoPlayerController _controller;
-
+  late PageController _pageController;
+  int currentIndex = 0;
+  List<String> videoList = [
+    "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4",
+    "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4",
+    "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4",
+    "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4",
+    "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4",
+  ];
   Future<ClosedCaptionFile> _loadCaptions() async {
     final String fileContents = await DefaultAssetBundle.of(context).loadString("assets/bumble_bee_captions.vtt");
     return WebVTTCaptionFile(fileContents);
@@ -21,20 +29,8 @@ class _BumbleBeeRemoteVideoState extends State<BumbleBeeRemoteVideo> {
 
   @override
   void initState() {
-    _controller = VideoPlayerController.networkUrl(
-      Uri.parse("https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4"),
-      closedCaptionFile: _loadCaptions(),
-      videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true)
-    );
-    _controller.initialize();
-    _controller.setLooping(true);
-    _controller.addListener(() {
-      log("_controller.addListener");
-      setState(() {
-
-      });
-    });
-
+    _pageController = PageController(initialPage: 0,keepPage: true);
+    createVideoController(videoList[currentIndex]);
     super.initState();
   }
 
@@ -46,30 +42,63 @@ class _BumbleBeeRemoteVideoState extends State<BumbleBeeRemoteVideo> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.only(top: 20.0),
-          ),
-          const Text("With Remote Mp4"),
-          Container(
-            padding: const EdgeInsets.all(20),
-            child: AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
-              child: Stack(
-                alignment: Alignment.bottomCenter,
-                children: [
-                  VideoPlayer(_controller),
-                  ClosedCaption(text: _controller.value.caption.text),
-                  ControlOverlay(controller: _controller),
-                  VideoProgressIndicator(_controller,allowScrubbing: true)
-                ],
-              ),
-            ),
-          )
-        ],
-      ),
+
+    return Scaffold(
+      body: PageView.builder(itemBuilder: (context, index) {
+        return _playerWidget();
+      },
+        scrollDirection: Axis.vertical,
+        physics: const BouncingScrollPhysics(),
+        itemCount: 5,
+        controller: _pageController,
+        onPageChanged: (value) {
+          currentIndex = value;
+          createVideoController(videoList[currentIndex]);
+          setState(() {
+
+          });
+        },
+      )
     );
+  }
+  Widget _playerWidget() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(20),
+          child: AspectRatio(
+            aspectRatio: _controller.value.aspectRatio,
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                VideoPlayer(_controller),
+                ClosedCaption(text: _controller.value.caption.text),
+                ControlOverlay(controller: _controller),
+                VideoProgressIndicator(_controller,allowScrubbing: true)
+              ],
+            ),
+          ),
+        )
+      ],
+    );
+  }
+  void destroyController() {
+    _controller.dispose();
+  }
+  void createVideoController(String url) {
+    _controller = VideoPlayerController.networkUrl(
+        Uri.parse(url),
+        closedCaptionFile: _loadCaptions(),
+        videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true)
+    );
+    _controller.initialize();
+    _controller.setLooping(true);
+    _controller.addListener(() {
+      log("_controller.addListener");
+      setState(() {
+
+      });
+    });
   }
 }

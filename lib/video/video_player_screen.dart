@@ -17,8 +17,11 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    // https://cachem3u8.2s0.cn:8899/VideoPlay.php?r=f586f108e753b6f5f672f82393c12e72.m3u8
+    // "https://s3.bfengbf.com/video/dinvguilai/第01集/index.m3u8"
+    //  https://s3.bfengbf.com/video/yijiaoshuaichugepotianfugui/第01集/index.m3u8
     _controller = VideoPlayerController.networkUrl(
-        Uri.parse("https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4"));
+        Uri.parse("https://s3.bfengbf.com/video/dinvguilai/第01集/index.m3u8"));
     _controller.setLooping(true);
     _initializeVideoPlayerFuture = _controller.initialize();
   }
@@ -26,6 +29,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   @override
   void dispose() {
     _controller.dispose();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+
+    });
     super.dispose();
   }
 
